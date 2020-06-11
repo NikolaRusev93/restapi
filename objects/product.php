@@ -118,4 +118,18 @@ class Product
         $stmt->bindParam(':id', $this->id);
         return $stmt->execute() ? true : false;
     }
+
+    // delete the product
+    public function delete() {
+        // delete query
+        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+
+        // prepare query
+        $stmt = $this->conn->prepare($query);
+        // sanitize
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        // bind id of record to delete
+        $stmt->bindParam(1, $this->id);
+        return $stmt->execute() ? true : false;
+    }
 }
