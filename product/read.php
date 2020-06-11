@@ -22,8 +22,8 @@ $num = $stmt->rowCount();
 if ($num>0) {
 
     // products array
-    $products_arr=array();
-    $products_arr["records"]=array();
+    $products_arr = [];
+    $products_arr["records"] = [];
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         // extract row
