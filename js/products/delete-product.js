@@ -17,12 +17,12 @@ $(document).ready(function(){
           callback: function (result) {
             if (result==true) {
               $.ajax({
-                  url: "https://unibit-rest-api.000webhostapp.com/product/delete.php",
+                  url: "http://localhost:884/restapi/product/delete.php",
                   type : "POST",
                   dataType : 'json',
                   data : JSON.stringify({ id: id }),
                   success : function(result) {
-                      showProducts();
+                      showProductsFirstPage();
                   },
                   error: function(xhr, resp, text) {
                       console.log(xhr, resp, text);

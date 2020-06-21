@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     $(document).on('click', '.create-product-button', function() {
 
-      $.getJSON("https://unibit-rest-api.000webhostapp.com/category/read.php", function(data) {
+      $.getJSON("http://localhost:884/restapi/category/read.php", function(data) {
 
         var categories_options_html=`<select name='category_id' class='form-control'>`;
         $.each(data.records, function(key, val){
@@ -62,12 +62,12 @@ $(document).ready(function() {
 
       var form_data=JSON.stringify($(this).serializeObject());
       $.ajax({
-        url: "https://unibit-rest-api.000webhostapp.com/product/create.php",
+        url: "http://localhost:884/restapi/product/create.php",
         type : "POST",
         contentType : 'application/json',
         data : form_data,
         success : function(result) {
-            showProducts();
+            showProductsFirstPage();
         },
         error: function(xhr, resp, text) {
             console.log(xhr, resp, text);

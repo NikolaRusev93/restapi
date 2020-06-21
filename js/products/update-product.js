@@ -2,13 +2,13 @@ $(document).ready(function(){
 
     $(document).on('click', '.update-product-button', function() {
         var id = $(this).attr('data-id');
-        $.getJSON("https://unibit-rest-api.000webhostapp.com/product/read_one.php?id=" + id, function(data) {
+        $.getJSON("http://localhost:884/restapi/product/read_one.php?id=" + id, function(data) {
           var name = data.name;
           var price = data.price;
           var description = data.description;
           var category_id = data.category_id;
           var category_name = data.category_name;
-          $.getJSON("https://unibit-rest-api.000webhostapp.com/category/read.php", function(data) {
+          $.getJSON("http://localhost:884/restapi/category/read.php", function(data) {
             var categories_options_html=`<select name='category_id' class='form-control'>`;
             $.each(data.records, function(key, val){
                 if(val.id==category_id){ categories_options_html+=`<option value='` + val.id + `' selected>` + val.name + `</option>`; }
@@ -56,12 +56,12 @@ $(document).ready(function(){
     $(document).on('submit', '#update-product-form', function() {
       var form_data=JSON.stringify($(this).serializeObject());
       $.ajax({
-        url: "https://unibit-rest-api.000webhostapp.com/product/update.php",
+        url: "http://localhost:884/restapi/product/update.php",
         type : "POST",
         contentType : 'application/json',
         data : form_data,
         success : function(result) {
-            showProducts();
+            showProductsFirstPage();
         },
         error: function(xhr, resp, text) {
             console.log(xhr, resp, text);

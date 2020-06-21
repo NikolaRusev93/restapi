@@ -12,7 +12,7 @@ $(document).ready(function() {
 });
 
 function showProductsFirstPage(){
-    var json_url="https://unibit-rest-api.000webhostapp.com/product/read_paging.php";
+    var json_url="http://localhost:884/restapi/product/read_paging.php";
     showProducts(json_url);
 }
 
